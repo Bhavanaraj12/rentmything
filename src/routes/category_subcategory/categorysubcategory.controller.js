@@ -4,6 +4,29 @@ const subcategorytable = require("../../models/subcategoryTB");
 
 const { logger } = require('../../utils');
 
+const allcategories = async (request, response) => {
+    try {
+        const all=await categoryTable.find()
+        if (all) {
+            response.json({
+                data: all,
+                success: true,
+                error: false
+            });
+        }
+        else {
+            console.error("Error getting allcategories:", find.error);
+            response.status(500).json({ message: "An error occurred while getting the allcategories" });
+        }
+
+
+    }
+    catch (error) {
+        logger.error(`Internal server error: ${error.message} in allcategories api`);
+        response.status(500).json({ error: "An error occurred" });
+
+    }
+}
 
 const categoryadd = async (request, response) => {
     try {
@@ -35,7 +58,8 @@ const getcategory = async (request, response) => {
     try {
         const name = request.body.name
         if (name) {
-            const find = await categoryTable.find({ name: name })
+            const regex = new RegExp(name, 'i');
+            const find = await categoryTable.find({ name: regex })
             if (find) {
                 response.json({
                     data: find,
@@ -90,7 +114,8 @@ const getsubcategory = async (request, response) => {
     try {
         const name = request.body.type
         if (name) {
-            const find = await subcategorytable.find({ type: name })
+            const regex = new RegExp(name, 'i');
+            const find = await subcategorytable.find({ type: regex })
             if (find) {
                 response.json({
                     data: find,
@@ -113,4 +138,4 @@ const getsubcategory = async (request, response) => {
     }
 }
 
-module.exports = { categoryadd, subcategoryadd, getcategory, getsubcategory }
+module.exports = { allcategories, categoryadd, subcategoryadd, getcategory, getsubcategory }

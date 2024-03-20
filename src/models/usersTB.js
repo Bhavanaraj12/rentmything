@@ -13,7 +13,7 @@ var usersSchema = new schema({
     name: { type: String },
     email: { type: String, unique: true },
     password: { type: String },
-    phone_number:{type:Number},
+    phone_number:{type:String},
     // created_date: { type: Date },
     created_by: { type: String },
     // modified_date: { type: Date }

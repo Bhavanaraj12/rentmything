@@ -39,7 +39,7 @@ const usersadd = async (request, response) => {
         }
         const hashedPass = await bcrypt.hash(password, 5);
 
-        const newUser = { name, hashedPass, email, phone_number };
+        const newUser = { name, password: hashedPass, email, phone_number };
 
         const addUserResult = await UsersTable.create(newUser);
 
@@ -67,6 +67,79 @@ const usersadd = async (request, response) => {
 
     }
 }
+
+const login = async (request, response) => {
+    console.log("first", request.body);
+    try {
+        const { user_name, password } = request.body;
+        let user;
+
+        if (!password) {
+            return response.status(401).json({
+                error: true,
+                success: false,
+                message: 'Password required',
+            });
+        }
+
+        if (user_name) {
+            let query = {};
+            if (typeof user_name === 'number') {
+                user_name = user_name.toString(); // Convert number to string
+                console.log({user_name})
+            }
+            query = { $or: [{ email: user_name }, { phone_number: user_name }] };
+
+            user = await UsersTable.findOne(query);
+            if (!user) {
+                return response.status(401).json({
+                    error: true,
+                    success: false,
+                    message: 'Incorrect Email or Phone number!',
+                });
+            }
+        } else {
+            return response.status(401).json({
+                error: true,
+                success: false,
+                message: 'Email or phone number required',
+            });
+        }
+
+        const hashedDbPassword = user.password;
+        bcrypt.compare(password, hashedDbPassword, function (err, result) {
+            if (err) {
+                return response.status(500).json({
+                    error: true,
+                    success: false,
+                    message: 'Password hashing error',
+                });
+            }
+
+            if (!result) {
+                return response.status(401).json({
+                    error: true,
+                    success: false,
+                    message: 'Please check your password!',
+                });
+            }
+
+            return response.status(200).json({
+                success: true,
+                error: false,
+                login_id: user._id,
+                name: user.name,
+                message: 'Login successful',
+            });
+        });
+    } catch (error) {
+        logger.error(`Internal server error: ${error.message} in login api`);
+        response.status(500).json({ error: "An error occurred" });
+    }
+}
+
+
+
 
 const editUser = async (request, response) => {
     try {
@@ -132,4 +205,4 @@ const userdetails = async (request, response) => {
 
 
 
-module.exports = { usersadd, editUser, userdetails }
+module.exports = { usersadd, login, editUser, userdetails }

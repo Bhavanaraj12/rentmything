@@ -12,6 +12,7 @@ const schema = mongoose.Schema;
 var products = new schema({
     name: { type: String },
     category: { type: String },
+    image: { type: String },
     subcategory: { type: String },
     brand: { type: String },
     year: { type: Number },
@@ -25,6 +26,8 @@ var products = new schema({
     availability: { type: String },
     rent_status: { type: Boolean },
     created_by: { type: mongoose.Schema.Types.ObjectId, ref: "users" },
+    popularityCount: { type: Number, default: 0 },
+    is_active: { type: Boolean }
     // created_date:{type:Date},
     // modified_date:{type:Date}
 

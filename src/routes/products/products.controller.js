@@ -4,10 +4,10 @@ const { logger } = require('../../utils');
 
 const productsadd = async (request, response) => {
     try {
-        const { name, category, subcategory, brand, year, subtype1, subtype2, subtype3, description, time_period, location, rent_status, price, availability, created_by } = request.body
+        const { name, category, image, subcategory, brand, year, subtype1, subtype2, subtype3, description, time_period, location, rent_status, price, availability, created_by } = request.body
 
         // Create a new user object with validated data
-        const newUser = { name, category, subcategory, brand, year, subtype1, subtype2, subtype3, description, time_period, location, rent_status, price, availability, created_by };
+        const newUser = { name, category, image, subcategory, brand, year, subtype1, subtype2, subtype3, description, time_period, location, rent_status, price, availability, created_by };
 
         const productsadd = await ProductsTable.create(newUser);
 
@@ -31,7 +31,7 @@ const productsadd = async (request, response) => {
 }
 
 const productsedit = async (request, response) => {
-    const { name, category, subcategory, brand, year, subtype1, subtype2, subtype3, description, time_period, location, rent_status, price, availability } = request.body
+    const { name, category, image, subcategory, brand, year, subtype1, subtype2, subtype3, description, time_period, location, rent_status, price, availability } = request.body
     try {
         const productId = request.body.id; // 
         const product = await ProductsTable.findById(productId);
@@ -43,6 +43,7 @@ const productsedit = async (request, response) => {
         // Update product fields
         product.name = name;
         product.category = category;
+        product.image = image;
         product.subcategory = subcategory;
         product.brand = brand;
         product.year = year;
@@ -93,4 +94,43 @@ const productlistbyuserid = async (request, response) => {
     }
 }
 
-module.exports = { productsadd, productsedit, productlistbyuserid }
+const productdetails = async (request, response) => {
+    try {
+        const prod_id = request.body.productId
+        if (prod_id) {
+            const product = await ProductsTable.findById(prod_id)
+            if (!product) {
+                return response.status(404).json({ error: 'Product not found' });
+            }
+            product.popularityCount = product.popularityCount + 1;
+            const updatedProduct = await product.save();
+            response.status(200).json({
+                error: false,
+                success: true,
+                data: updatedProduct
+            });
+        }
+    } catch (error) {
+        logger.error(`Internal server error: ${error.message} in productdetails api`);
+        response.status(500).json({ error: "An error occurred" });
+    }
+}
+
+const popularproduct = async (request, response) => {
+    try {
+        const popularProducts = await ProductsTable.find().sort({ popularityCount: -1 }).limit(10);
+        response.status(200).json({
+            message: "success",
+            error: false,
+            success: true,
+            data: popularProducts
+        });
+
+    }
+    catch (error) {
+        logger.error(`Internal server error: ${error.message} in popularproduct api`);
+        response.status(500).json({ error: "An error occurred" });
+    }
+}
+
+module.exports = { productsadd, productsedit, productlistbyuserid, productdetails, popularproduct }
