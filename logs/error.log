@@ -1,1 +1,25 @@
 {"level":"error","message":"Internal server error: Cast to Number failed for value \"mmusthafa270@gmail.com\" (type string) at path \"phone_number\" for model \"users\" in login api","timestamp":"2024-03-20T12:24:52.241Z"}
+{"level":"error","message":"Internal server error: Cast to ObjectId failed for value \"\" (type string) at path \"_id\" for model \"users\" in userdetails api","timestamp":"2024-03-21T05:40:40.959Z"}
+{"level":"error","message":"Internal server error: Cast to Number failed for value \"$2b$05$WbLYqI5nduv4jYWQ2Btj8OVV1tMf51lIxRFgWMO90GeFDRx7xIf02\" (type string) at path \"temp_otp\" in forgotPwd api","timestamp":"2024-03-21T05:56:28.448Z"}
+{"level":"error","message":"Internal server error: Cast to Number failed for value \"$2b$05$kYf0fWRnPtcd/n9uDw.yd.gixpdTNMoWMRR84on4cLkdlTzjjZi.2\" (type string) at path \"temp_otp\" in forgotPwd api","timestamp":"2024-03-21T05:57:02.987Z"}
+{"level":"error","message":"Internal server error: Cast to Number failed for value \"$2b$05$Kd9s6rslW5pG07MqRFIUS.aqpwQo9RBM.QkYAW5GR/Qt7rEkN0Zga\" (type string) at path \"temp_otp\" in forgotPwd api","timestamp":"2024-03-21T05:58:39.982Z"}
+{"level":"error","message":"Internal server error: fs is not defined in forgotPwd api","timestamp":"2024-03-21T06:21:14.175Z"}
+{"level":"error","message":"Internal server error: ENOENT: no such file or directory, open 'C:\\Users\\dell\\Desktop\\rentmything\\views\\user_temp_otp.hbs' in forgotPwd api","timestamp":"2024-03-21T06:21:47.999Z"}
+{"level":"error","message":"Internal server error: ENOENT: no such file or directory, open 'C:\\Users\\dell\\Desktop\\rentmything\\views\\user_temp_otp.hbs' in forgotPwd api","timestamp":"2024-03-21T06:23:49.675Z"}
+{"level":"error","message":"Internal server error: ENOENT: no such file or directory, open 'C:\\Users\\dell\\Desktop\\rentmything\\src\\views\\user_temp_otp.hbs' in forgotPwd api","timestamp":"2024-03-21T06:24:23.383Z"}
+{"level":"error","message":"Internal server error: E11000 duplicate key error collection: rentmythingdb.users index: phone_number_1 dup key: { phone_number: null } in googlesignadd api","timestamp":"2024-03-21T06:59:58.067Z"}
+{"level":"error","message":"Internal server error: E11000 duplicate key error collection: rentmythingdb.users index: phone_number_1 dup key: { phone_number: null } in googlesignadd api","timestamp":"2024-03-21T07:00:33.133Z"}
+{"level":"error","message":"Internal server error: E11000 duplicate key error collection: rentmythingdb.users index: phone_number_1 dup key: { phone_number: null } in googlesignadd api","timestamp":"2024-03-21T07:00:51.362Z"}
+{"level":"error","message":"Internal server error: E11000 duplicate key error collection: rentmythingdb.users index: phone_number_1 dup key: { phone_number: null } in googlesignadd api","timestamp":"2024-03-21T07:01:43.360Z"}
+{"level":"error","message":"Internal server error: E11000 duplicate key error collection: rentmythingdb.users index: phone_number_1 dup key: { phone_number: null } in googlesignadd api","timestamp":"2024-03-21T07:01:56.599Z"}
+{"level":"error","message":"Internal server error: E11000 duplicate key error collection: rentmythingdb.users index: phone_number_1 dup key: { phone_number: null } in googlesignadd api","timestamp":"2024-03-21T07:02:12.928Z"}
+{"level":"error","message":"Internal server error: E11000 duplicate key error collection: rentmythingdb.users index: phone_number_1 dup key: { phone_number: null } in googlesignadd api","timestamp":"2024-03-21T07:02:14.630Z"}
+{"level":"error","message":"Internal server error: E11000 duplicate key error collection: rentmythingdb.users index: phone_number_1 dup key: { phone_number: null } in googlesignadd api","timestamp":"2024-03-21T07:02:15.722Z"}
+{"level":"error","message":"Internal server error: E11000 duplicate key error collection: rentmythingdb.users index: phone_number_1 dup key: { phone_number: null } in googlesignadd api","timestamp":"2024-03-21T07:02:53.886Z"}
+{"level":"error","message":"Internal server error: reviewRoutes.find is not a function in productreviews api","timestamp":"2024-03-21T11:01:22.910Z"}
+{"level":"error","message":"email or otp field is empty in otpLogin api","timestamp":"2024-03-21T12:11:00.424Z"}
+{"level":"error","message":"email or otp field is empty in otpLogin api","timestamp":"2024-03-21T12:13:28.177Z"}
+{"level":"error","message":"email or otp field is empty in otpLogin api","timestamp":"2024-03-21T12:15:45.473Z"}
+{"level":"error","message":"email or otp field is empty in otpLogin api","timestamp":"2024-03-21T12:17:20.068Z"}
+{"level":"error","message":"otp is not matching -in otpLogin api","timestamp":"2024-03-21T12:18:26.206Z"}
+{"level":"error","message":"email or otp field is empty in otpLogin api","timestamp":"2024-03-21T12:21:28.190Z"}

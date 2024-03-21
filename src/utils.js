@@ -5,6 +5,7 @@ const fs = require('fs');
 const jwt = require("jsonwebtoken");
 const nodemailer = require('nodemailer');
 const otpGenerator = require('otp-generator');
+const hbs = require("nodemailer-express-handlebars");
 
 // Create a logs directory if it doesn't exist
 const logDirectory = './logs';
@@ -38,5 +39,6 @@ module.exports = {
     jwt,
     istDate,
     otpGenerator,
-    nodemailer
+    nodemailer,
+    hbs
   };

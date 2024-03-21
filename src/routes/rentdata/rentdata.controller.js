@@ -45,12 +45,10 @@ const rented_data = async (request, response) => {
         else{
             response.status(400).json({ error: "Missing required field" });
         }
-
     }
     catch (error) {
         logger.error(`Internal server error: ${error.message} in addrentdata API`);
         response.status(500).json({ error: "An error occurred" });
-
     }
 }
 

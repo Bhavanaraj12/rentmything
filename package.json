@@ -11,6 +11,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.2.2",
     "nodemailer": "^6.9.12",
+    "nodemailer-express-handlebars": "^6.1.2",
     "otp-generator": "^4.0.1",
     "path": "^0.12.7",
     "winston": "^3.12.0"

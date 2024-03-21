@@ -12,7 +12,8 @@ var reviewschema = new schema({
     prod_id: { type: mongoose.Schema.Types.ObjectId, ref: "products" },
     created_by: { type: mongoose.Schema.Types.ObjectId, ref: "users" },
     message: { type: String },
-    end_date: { type: String }
+    image: { type: String },
+    rating: { type: String }
 }, {
     timestamps: true
 })
